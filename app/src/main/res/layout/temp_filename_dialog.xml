@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="270dp">
+
+   <android.support.v7.widget.AppCompatTextView
+       android:id="@+id/temp_dialog__title"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_margin="30dp"
+       android:text="CREATENEWFILEDIALOGTEXT"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/temp_dialog__title"
+        android:layout_margin="30dp"
+        >
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="TEST"
+            android:textSize="16dp"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+       <android.support.v7.widget.AppCompatButton
+           android:id="@+id/temp_dialog_positiveBtn"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:text="negative"
+           android:layout_height="wrap_content" />
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="positive"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>

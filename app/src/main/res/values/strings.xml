@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">CV.Wizard</string>
+    <string name="welcome_text">Welcome to CV.WizardWelcome to CV.WizardWelcome to CV.WizardWelcome to CV.Wizard
+    Welcome to CV.WizardWelcome to CV.WizardWelcome to CV.WizardWelcome to CV.WizardWelcome to CV.WizardWelcome to CV.Wizard</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="optional">Optional</string>
+
+    <!-- Personal Details Tab -->
+    <string name="personal_details_topic">Personal details and contact info</string>
+
+    <!-- Education Tab -->
+    <string name="military_service_topic">Military Service</string>
+    <string name="role">What was your role?</string>
+    <string name="corps">Where did you served?</string>
+    <string name="service_date">Service period</string>
+    <string name="notes">Notes</string>
+
+    <string name="academy_topic">High education Info</string>
+    <string name="academy_name">Collage/Institute Name</string>
+    <string name="Degree_title">Degree Title</string>
+    <string name="Grade">Grade/cgpa</string>
+    <string name="study_period">Study Period</string>
+
+    <!-- Experience Tab -->
+    <string name="workplace_topic">Recent Workplace</string>
+    <string name="workplace_company_name">Company name</string>
+    <string name="workplace_role">Position</string>
+    <string name="workplace_responsabilities">Responsibilities</string>
+    <string name="workplace_period">Work Period</string>
+    <string name="workplace_website">Companys website</string>
+
+
+    <string-array name="yearsOfServiceStart">
+        <item>Start</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+    </string-array>
+
+    <string-array name="yearsOfServiceEnd">
+        <item>End</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+    </string-array>
+
+
+
+</resources>
