@@ -4,30 +4,24 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.util.ArrayMap;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.widget.TextView;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.example.fragments.EducationTab;
 import com.example.fragments.ExperienceTab;
@@ -48,22 +42,25 @@ public class DetailsActivity extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    public SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    public ViewPager mViewPager;
    public static Toolbar toolbar;
     FloatingActionButton fab;
     public CanvasDrawer canvasDrawer;
     File f;
+    public WebView webView;
+
 
     private  final int REQUEST_EXTERNAL_STORAGE = 1;
     private  String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+    private boolean CREATE_ORDER_GIVEN = false;
 
 
     @Override
@@ -95,10 +92,14 @@ public class DetailsActivity extends AppCompatActivity {
                     Snackbar.make(view, "Creating Canvass", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
                     CreateCanvas();
+
                 }else {
+                    CREATE_ORDER_GIVEN = true;
                     Snackbar.make(view, "Saving data to Canvass", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
+                    webView.loadUrl("javascript:setName('Pavel','koifman')");
                     saveData();
+
                 }
             }
         });
@@ -113,6 +114,30 @@ public class DetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        webView = (WebView) findViewById(R.id.webview_temp);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+
+
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                if(CREATE_ORDER_GIVEN)
+                saveData();
+                CREATE_ORDER_GIVEN = false;
+            }
+        });
+
+        webView.loadUrl("file:///android_asset/web_temp/personalDetailsTemp.html");
+
+
 
 
     }
@@ -199,7 +224,7 @@ public class DetailsActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        PersonalDetailsTab personalDetailsTab = new PersonalDetailsTab();
+        public PersonalDetailsTab personalDetailsTab = new PersonalDetailsTab();
         EducationTab educationTab = new EducationTab();
         ExperienceTab experienceTab = new ExperienceTab();
 
@@ -260,8 +285,10 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void saveData(){
 
-
         ArrayMap<String,String> stringArrayMap = mSectionsPagerAdapter.personalDetailsTab.retriveWrittenData();
+      //  webView.loadUrl("javascript:setName(" + stringArrayMap.valueAt(0) + ", "+ stringArrayMap.valueAt(1) +")");
+
+
         PDFCreator pdfCreator = new PDFCreator(this,canvasDrawer);
         pdfCreator.createWrittenPage(1,stringArrayMap);
 

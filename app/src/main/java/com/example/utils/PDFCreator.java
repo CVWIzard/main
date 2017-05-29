@@ -54,13 +54,15 @@ public class PDFCreator {
 
     public void createWrittenPage(int pageNumber,ArrayMap<String,String> dataMap){
 
-        PageInfo pageInfo = new PageInfo.Builder(300,3000, pageNumber).create();
+        PageInfo pageInfo = new PageInfo.Builder(mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView().getWidth(),mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView().getHeight(), 5).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-        View content = mDetailsActivity.getCurrentFocus();
-        for (int i = 0; i<dataMap.size(); i++) {
+       // View content = mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView();
+        View content = mDetailsActivity.webView;
+       /* for (int i = 0; i<dataMap.size(); i++) {
             canvasDrawer.drawLineOnCanvas(dataMap.keyAt(i),page.getCanvas(),100, i * 100);
             canvasDrawer.drawLineOnCanvas(dataMap.valueAt(i),page.getCanvas(),200,i* 100);
-        }
+        }*/
+       content.draw(page.getCanvas());
 
         pdfDocument.finishPage(page);
         try {
