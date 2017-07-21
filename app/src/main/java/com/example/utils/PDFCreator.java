@@ -57,7 +57,7 @@ public class PDFCreator {
         PageInfo pageInfo = new PageInfo.Builder(mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView().getWidth(),mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView().getHeight(), 5).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
        // View content = mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView();
-        View content = mDetailsActivity.webView;
+        View content = mDetailsActivity.webViewFragment.mWebView;
        /* for (int i = 0; i<dataMap.size(); i++) {
             canvasDrawer.drawLineOnCanvas(dataMap.keyAt(i),page.getCanvas(),100, i * 100);
             canvasDrawer.drawLineOnCanvas(dataMap.valueAt(i),page.getCanvas(),200,i* 100);

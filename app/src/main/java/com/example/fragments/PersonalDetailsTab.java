@@ -93,7 +93,7 @@ public class PersonalDetailsTab extends Fragment {
                Log.i(getClass().getSimpleName(), "Hint: " + inputEditTextLayout.getHint() + " Text: " + inputEditText.getText().toString());
                mKeys[i] = inputEditTextLayout.getHint().toString();
                mValues[i] = inputEditText.getText().toString();
-               arrayMap.put(mKeys[i],mValues[i]);
+               arrayMap.put(mKeys[i],"'" + mValues[i] + "'");
            }
         }
 

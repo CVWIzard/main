@@ -1,58 +1,108 @@
- <!DOCTYPE html>
- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-     <title>TITLE</title>
-     <meta name="description" content="DESCRIPTION">
-    <link rel="stylesheet" href="PATH">
-    <link rel="stylesheet" type="text/css"
-           href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <meta name="description" content="DESCRIPTION">
+   <!--<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3mobile.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Arimo">
 
-     <!--[if lt IE 9]>
-       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-     <![endif]-->
-     <style>
-     body {
-       font-family: 'Ubuntu', serif;
+    <!--[if lt IE 9]>
+      <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+    body {
+      font-family: 'Arimo', serif;
+      margin-right: 5%;
+     direction: rtl;
+    }
+   p{
 
-     }
-     p{
-       margin-top: 10%;
-     }
+      margin-top: 10%;
 
-     h1{
-       margin-left: 32%;
-     }
- </head>
+    }
+
+    h3{
+      text-underline-position: alphabetic;
+      margin-top: 5%;
+      font-size: 18px;
+      font-weight: bold;
+      white-space: nowrap
+
+    }
+
+    aside{
+      width: 50%;
+      float: left;
+      margin-top: 10%;
+      font-size: 14px;
+      margin-left: 5%;
+      white-space: nowrap;
+    }
+
+    .material-icons{
+      font-size:14px;
+      color:blue;
+      float: left;
+      margin-right: 10px;
+      display: inline-block;
+
+    }
+    .personal{
+      margin-top: -5%;
+
+    }
+
+</head>
 
 </style>
 
- <body>
+<body>
 
- <script>
+<script>
 
 
- window.onload = function WindowLoad(event) {
-
+window.onload = function WindowLoad(event) {
+//  setName("פבל קויפמן","0527841723","קרית ים ג","pavel4567@gmail.com")
 }
 
-function setName(name,email){
-    document.getElementById("name").innerHTML = document.getElementById("name").innerHTML + name;
-      document.getElementById("email").innerHTML = document.getElementById("email").innerHTML + email;
+function setName(name,phoneNum,City,emailAdress){
+   document.getElementById("name").innerHTML = document.getElementById("name").innerHTML + " - " + name;
+   document.getElementById("phoneNum").innerHTML = '<i class="material-icons"">call</i>' + phoneNum;
+   document.getElementById("homeCity").innerHTML = '<i class="material-icons">location_city</i>' + City;
+   document.getElementById("emailAdress").innerHTML = '<span style="font-weight:bold; color:blue; float:left;">@</span>'+ emailAdress;
 }
 
 
 
- </script>
+</script>
 
-  <h1>Hello World </h1>
-  <p id="name">
-  Name:
-  </p>
-  <p id="email">
-  Email:
-  </p>
- </body>
+<div>
 
- </html>
+<aside id="personalDetails">
+<p class="personal" id="homeCity">
+<!-- <i class="material-icons">location_city</i> קרית ים -->
+</p>
+<p class="personal" id="phoneNum" style="font-weight:bold">
+<!--<i class="material-icons"">call</i> 052-784-1723 -->
+</p>
+<p class="personal" id="emailAdress" style="font-weight:bold">
+<!-- <span style="font-weight:bold; color:blue; float:left;white-space: nowrap">@</span> pavel4567@gmail.com -->
+</p>
+</aside>
+
+
+
+ <h3 id="name">קורות חיים</h3>
+ <p id="title" style=" font-weight: bold;  margin-top: 3%; font-size:12px">מפתח אנדרואיד</p>
+
+ </div>
+
+
+</body>
+
+</html>

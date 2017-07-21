@@ -26,6 +26,7 @@ import android.webkit.WebViewClient;
 import com.example.fragments.EducationTab;
 import com.example.fragments.ExperienceTab;
 import com.example.fragments.PersonalDetailsTab;
+import com.example.fragments.WebViewFragment;
 import com.example.utils.AppParameters;
 import com.example.utils.CanvasDrawer;
 import com.example.utils.PDFCreator;
@@ -52,7 +53,9 @@ public class DetailsActivity extends AppCompatActivity {
     FloatingActionButton fab;
     public CanvasDrawer canvasDrawer;
     File f;
-    public WebView webView;
+   public WebViewFragment webViewFragment;
+
+    ArrayMap<String,String> stringArrayMap;
 
 
     private  final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -67,6 +70,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
 
         findViewById(R.id.appbar).setBackgroundColor(ContextCompat.getColor(this,R.color.fabColor));
          toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -87,6 +91,10 @@ public class DetailsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(webViewFragment == null) {
+                    webViewFragment = new WebViewFragment();
+                    getSupportFragmentManager().beginTransaction().add(R.id.main_content,webViewFragment,"Preview").commitAllowingStateLoss();
+                }
 
                 if(canvasDrawer == null){
                     Snackbar.make(view, "Creating Canvass", Snackbar.LENGTH_SHORT)
@@ -95,10 +103,18 @@ public class DetailsActivity extends AppCompatActivity {
 
                 }else {
                     CREATE_ORDER_GIVEN = true;
-                    Snackbar.make(view, "Saving data to Canvass", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null).show();
-                    webView.loadUrl("javascript:setName('Pavel','koifman')");
-                    saveData();
+                    Snackbar.make(view, "Saving data to Canvass", Snackbar.LENGTH_LONG)
+                            .setAction("Save Data to PDF", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    saveData();
+                                }
+                            }).show();
+                    //function setName(name,phoneNum,City,emailAdress)
+                    stringArrayMap = mSectionsPagerAdapter.personalDetailsTab.retriveWrittenData();
+                   webViewFragment.mWebView.loadUrl("javascript:setName(" + stringArrayMap.get("First Name") + ","+ stringArrayMap.get("Contact Number") +","+ stringArrayMap.get("Homecity") +","+ stringArrayMap.get("Email") +")");
+                  // webViewFragment.mWebView.loadUrl("javascript:setName('pavel koifman','0527841723','haifa','pav@')");
+
 
                 }
             }
@@ -115,27 +131,10 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
-        webView = (WebView) findViewById(R.id.webview_temp);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient(){
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
 
 
 
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                if(CREATE_ORDER_GIVEN)
-                saveData();
-                CREATE_ORDER_GIVEN = false;
-            }
-        });
 
-        webView.loadUrl("file:///android_asset/web_temp/personalDetailsTemp.html");
 
 
 
@@ -285,8 +284,9 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void saveData(){
 
-        ArrayMap<String,String> stringArrayMap = mSectionsPagerAdapter.personalDetailsTab.retriveWrittenData();
-      //  webView.loadUrl("javascript:setName(" + stringArrayMap.valueAt(0) + ", "+ stringArrayMap.valueAt(1) +")");
+        if(stringArrayMap.isEmpty())
+        stringArrayMap = mSectionsPagerAdapter.personalDetailsTab.retriveWrittenData();
+        //  webView.loadUrl("javascript:setName(" + stringArrayMap.valueAt(0) + ", "+ stringArrayMap.valueAt(1) +")");
 
 
         PDFCreator pdfCreator = new PDFCreator(this,canvasDrawer);
