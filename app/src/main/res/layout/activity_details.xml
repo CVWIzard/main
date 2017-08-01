@@ -28,25 +28,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-        <android.support.v4.view.PagerTitleStrip
-            android:id="@+id/pager_title_strip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#33b5e5"
-            android:textColor="#fff"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            ></android.support.v4.view.PagerTitleStrip>
-
-</android.support.v4.view.ViewPager>
-
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -57,5 +38,23 @@
         android:tint="@color/white"
         android:layout_margin="@dimen/fab_margin"
         />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pager_topic"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:elevation="2dp"
+            android:textColor="#fff"></android.support.v4.view.PagerTitleStrip>
+
+    </android.support.v4.view.ViewPager>
 
 </android.support.design.widget.CoordinatorLayout>

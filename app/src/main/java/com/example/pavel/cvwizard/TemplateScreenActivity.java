@@ -30,9 +30,9 @@ public class TemplateScreenActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          setContentView(R.layout.templatescreenactivity);
-        listView = (ListView) findViewById(R.id.lastFilesList);
-        LastFilesListAdapter listAdapter = new LastFilesListAdapter(this);
-        listView.setAdapter(listAdapter);
+      //  listView = (ListView) findViewById(R.id.lastFilesList);
+      //  LastFilesListAdapter listAdapter = new LastFilesListAdapter(this);
+      //  listView.setAdapter(listAdapter);
 
         getSupportFragmentManager().beginTransaction().add(R.id.temp_container,templateScreen,null).commit();
     }

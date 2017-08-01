@@ -41,6 +41,7 @@ public class TemplateScreen extends android.support.v4.app.Fragment {
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new GridLayoutManager(getContext(),2);
+       // layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new RecyclerAdapter(getActivity().getApplicationContext(),getFragmentManager());

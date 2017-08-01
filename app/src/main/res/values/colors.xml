@@ -7,7 +7,8 @@
     <color name="white">#ffffff</color>
     <color name="lightBlueSoft">#b3cde0</color>
     <color name="fabColor">#009688</color>
+    <color name="fabColorTransperent">#73009688</color>
     <color name="color_grey">#989ba0</color>
-
+    <color name="pager_topic">#1CB7C7</color>
     <color name="text_dark_grey">#212121</color>
 </resources>

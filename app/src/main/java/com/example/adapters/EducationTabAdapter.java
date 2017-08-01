@@ -65,9 +65,9 @@ public class EducationTabAdapter extends RecyclerView.Adapter<EducationTabAdapte
 
         switch (viewType) {
             case 0:
-                return new mEducationViewHolder(mMilitaryLayout);
-            case 1:
                 return new mEducationViewHolder(mAcademicLayout);
+            case 1:
+                return new mEducationViewHolder(mMilitaryLayout);
             default:
                 return null;
         }

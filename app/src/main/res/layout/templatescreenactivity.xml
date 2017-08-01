@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
+        android:visibility="gone"
         app:srcCompat="@drawable/tablem"/>
 
     <android.support.v7.widget.ContentFrameLayout
         android:id="@+id/lastFilesContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:padding="5dp">
             <ListView
                 android:layout_marginTop="10dp"
@@ -31,10 +33,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lastFilesContainer"
-        android:padding="5dp"
+
         >
 
     </android.support.v7.widget.ContentFrameLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@id/temp_container"
+        android:text="Work In Progress..."
+        style="@style/TextAppearance.AppCompat.Title"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="470dp"
+        />
 
 </RelativeLayout>

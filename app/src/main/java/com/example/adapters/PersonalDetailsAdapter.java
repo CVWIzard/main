@@ -60,6 +60,10 @@ public class PersonalDetailsAdapter extends RecyclerView.Adapter<PersonalDetails
         editText.setHighlightColor(ContextCompat.getColor(context,R.color.white));
 
         switch(position){
+            case 0: editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                break;
+            case 1: editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                break;
             case 2: editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 break;
             case 3: editText.setInputType(InputType.TYPE_CLASS_PHONE);

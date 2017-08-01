@@ -60,14 +60,7 @@ public class PersonalDetailsTab extends Fragment {
 
         personalDetailsAdapter = new PersonalDetailsAdapter(getActivity().getApplication(),"General");
         recyclerView.setAdapter(personalDetailsAdapter);
-     //   Drawable drawable = getResources().getDrawable(R.drawable.wave,null);
-        Drawable drawable = ContextCompat.getDrawable(getContext(),R.drawable.wave);
-        drawable.setAlpha(200);
 
-       // recyclerView.setBackground(drawable);
-
-        //recyclerView.setBackgroundColor(this.getResources().getColor(R.color.lightBlueSoft,null));
-     //   recyclerView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.lightBlueSoft));
         cardView.addView(recyclerView);
         return holder;
     }

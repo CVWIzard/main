@@ -53,7 +53,7 @@ public class EducationTab extends Fragment  {
         Spinner aEndDate = (Spinner) mAcademicLayout.findViewById(R.id.end_of_service);
         aStartDate.setAdapter(spinnerAdapterStart);
         aEndDate.setAdapter(spinnerAdapterEnd);
-        EducationTab.addToDataSet(mMilitaryLayout);
+       // EducationTab.addToDataSet(mMilitaryLayout);
         EducationTab.addToDataSet(mAcademicLayout);
 
     }

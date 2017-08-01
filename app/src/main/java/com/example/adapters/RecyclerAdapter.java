@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dialogs.Temp_screen_dialog;
@@ -34,10 +37,11 @@ Context context;
 
 
     Integer[] mImageIDs = {
-            R.drawable.htech1,
-            R.drawable.emergency,
-            R.drawable.sales1,
-            R.drawable.security
+            R.drawable.hi_tech,
+            R.drawable.medic,
+            R.drawable.salesman,
+            R.drawable.security_man,
+
     };
 
     String mImageTags[] = {
@@ -46,17 +50,18 @@ Context context;
             "Sales",
             "Security",
 
+
     };
 
     public static class TempViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
 
-        public CardView mCardViewHolder;
+        public FrameLayout mCardViewHolder;
 
 
         public TempViewHolder(View v) {
             super(v);
-            mCardViewHolder = (CardView) v;
+            mCardViewHolder = (FrameLayout) v;
         }
     }
 
@@ -64,8 +69,9 @@ Context context;
     @Override
     public TempViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.template_child, parent, false);
+       /* View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.template_child, parent, false);*/
+       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.template_screen_activity_new_viewholder,parent,false);
 
         TempViewHolder temp_vh = new TempViewHolder(v);
         return temp_vh;
@@ -73,8 +79,8 @@ Context context;
 
     @Override
     public void onBindViewHolder(TempViewHolder holder, final int position) {
-       final AppCompatImageView imageView = (AppCompatImageView) holder.mCardViewHolder.findViewById(R.id.temp_content_image);
-        final AppCompatTextView textView = (AppCompatTextView) holder.mCardViewHolder.findViewById(R.id.professionText);
+       final ImageView imageView = (ImageView) holder.mCardViewHolder.findViewById(R.id.temp_activity_holder_image);
+        final TextView textView = (TextView) holder.mCardViewHolder.findViewById(R.id.temp_activity_holder_text);
         imageView.setImageResource(mImageIDs[position]);
         textView.setText(mImageTags[position]);
 

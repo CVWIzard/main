@@ -16,7 +16,7 @@ public class StyledTextView extends android.support.v7.widget.AppCompatTextView 
 
     public StyledTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"font/Roboto-Regular.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"font/Roboto-Medium.ttf");
         this.setTypeface(typeface);
     }
 }
