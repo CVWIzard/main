@@ -11,6 +11,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.fragments.TemplateScreen;
@@ -18,7 +19,7 @@ import com.example.fragments.TemplateScreen;
 
 public class WelcomeScreen extends AppCompatActivity {
 
-    AppCompatTextView mStartBtn;
+    Button mStartBtn;
     AppCompatEditText mFilenameField;
     public static Context context;
 
@@ -31,7 +32,7 @@ public class WelcomeScreen extends AppCompatActivity {
 
 
 
-        mStartBtn = (AppCompatTextView) findViewById(R.id.startBtn);
+        mStartBtn = (Button) findViewById(R.id.startBtn);
 
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
