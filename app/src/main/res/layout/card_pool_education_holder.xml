@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/cardview_light_background"
+    android:layout_height="match_parent">
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CardView.Light"
+        android:layout_gravity="center_horizontal"
+        ></android.support.v7.widget.CardView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="MilitaryTempPic"
+        android:padding="@dimen/default_padding"
+        android:src="@drawable/military_layout_pic" />
+    <com.example.customViews.StyledTextView
+        android:id="@+id/temp_activity_holder_text"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="YEBANISM"
+        android:textSize="18dp"
+        android:textColor="#FFFFFF"
+        android:background="#000000"
+        android:alpha="0.8"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:gravity="center"
+        />
+
+</LinearLayout>

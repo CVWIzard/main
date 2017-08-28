@@ -54,6 +54,7 @@ public class DetailsActivity extends AppCompatActivity {
     public CanvasDrawer canvasDrawer;
     File f;
    public WebViewFragment webViewFragment;
+    public static DetailsActivity mInstance;
 
     ArrayMap<String,String> stringArrayMap;
 
@@ -70,6 +71,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        if(mInstance == null)mInstance = this;
 
 
         findViewById(R.id.appbar).setBackgroundColor(ContextCompat.getColor(this,R.color.fabColor));

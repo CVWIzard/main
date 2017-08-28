@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="optional">Optional</string>
+    <string name="education_card_pool">education card pool</string>
 
     <!-- Personal Details Tab -->
     <string name="personal_details_topic">Personal details and contact info</string>
