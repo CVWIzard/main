@@ -38,15 +38,33 @@
 
     </android.support.v7.widget.ContentFrameLayout>
 
-    <TextView
+    <FrameLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@id/temp_container"
-        android:text="Work In Progress..."
-        style="@style/TextAppearance.AppCompat.Title"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="470dp"
-        />
+        android:layout_height="200dp"
+       android:layout_below="@id/temp_container"
+        >
+
+        <ImageView
+            android:id="@+id/temp_activity_holder_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dollarphotoclub" />
+
+        <com.example.customViews.StyledTextView
+            android:id="@+id/temp_activity_holder_text"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="General"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:background="#000000"
+            android:alpha="0.8"
+            android:gravity="center"
+            />
+
+    </FrameLayout>
 
 </RelativeLayout>

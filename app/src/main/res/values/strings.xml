@@ -8,6 +8,9 @@
     <string name="optional">Optional</string>
     <string name="education_card_pool">education card pool</string>
 
+    <!--Entry menu -->
+    <string name="generate_file_button">Create new file</string>
+
     <!-- Personal Details Tab -->
     <string name="personal_details_topic">Personal details and contact info</string>
 
