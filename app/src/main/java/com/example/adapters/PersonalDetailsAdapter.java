@@ -55,7 +55,7 @@ public class PersonalDetailsAdapter extends RecyclerView.Adapter<PersonalDetails
         final TextInputLayout textInputLayout = (TextInputLayout) holder.mLinearLayoutViewHolder.findViewById(R.id.detail_edittext_layout);
         final TextInputEditText editText = (TextInputEditText) holder.mLinearLayoutViewHolder.findViewById(R.id.detail_edittext);
         textInputLayout.setHint(profession.getPersonalValues()[position]);
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"font/Roboto-Regular.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"font/Quicksand-Medium.ttf");
         textInputLayout.setTypeface(typeface);
         editText.setHighlightColor(ContextCompat.getColor(context,R.color.white));
 

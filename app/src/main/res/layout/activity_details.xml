@@ -5,7 +5,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#b3cde0"
+    android:background="@color/pager_topic"
     android:fitsSystemWindows="true"
     tools:context="com.example.pavel.cvwizard.DetailsActivity">
 
@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
+        android:visibility="gone"
         android:theme="@style/AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:visibility="gone"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/PopupOverlay">
 
@@ -36,6 +38,7 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_add_black_24dp"
         android:tint="@color/white"
+        app:backgroundTint="@color/pager_topic"
         android:layout_margin="@dimen/fab_margin"
         />
 
@@ -48,10 +51,10 @@
         <android.support.v4.view.PagerTitleStrip
             android:id="@+id/pager_title_strip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/pager_topic"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
+            android:paddingBottom="16dp"
+            style="@style/viewPagerTitleStrip"
             android:elevation="2dp"
             android:textColor="#fff"></android.support.v4.view.PagerTitleStrip>
 

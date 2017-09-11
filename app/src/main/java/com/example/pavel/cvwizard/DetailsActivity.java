@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.example.fragments.EducationCardPool;
 import com.example.fragments.EducationTab;
 import com.example.fragments.ExperienceTab;
 import com.example.fragments.PersonalDetailsTab;
@@ -65,7 +67,7 @@ public class DetailsActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     private boolean CREATE_ORDER_GIVEN = false;
-
+    public FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,11 +90,18 @@ public class DetailsActivity extends AppCompatActivity {
 
 
          fab = (FloatingActionButton) findViewById(R.id.fab);
+         fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in,R.anim.slide_out);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mViewPager.getCurrentItem() == 1){
+                    addEducationPool();
+                    return;
+                }
+
                 if(webViewFragment == null) {
                     webViewFragment = new WebViewFragment();
                     getSupportFragmentManager().beginTransaction().add(R.id.main_content,webViewFragment,"Preview").commitAllowingStateLoss();
@@ -119,6 +128,11 @@ public class DetailsActivity extends AppCompatActivity {
 
 
                 }
+            }
+
+            private void addEducationPool() {
+                EducationCardPool educationCardPool = new EducationCardPool();
+                fragmentTransaction.add(R.id.main_content,educationCardPool).addToBackStack("pool").commitAllowingStateLoss();
             }
         });
 

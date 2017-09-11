@@ -40,5 +40,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="viewPagerTitleStrip">
+        <item name="android:textColor">@color/primary_dark_material_light</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 
 </resources>

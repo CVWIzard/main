@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.adapters.EducationCardPoolAdapter;
+import com.example.pavel.cvwizard.DetailsActivity;
 import com.example.pavel.cvwizard.R;
 
 /**
@@ -32,6 +33,7 @@ public class EducationCardPool extends Fragment {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(),2,LinearLayoutManager.VERTICAL,false);
         mCardPoolRecycler.setLayoutManager(layoutManager);
         mCardPoolRecycler.setAdapter(educationCardPoolAdapter);
+        DetailsActivity.mInstance.fragmentTransaction = DetailsActivity.mInstance.getSupportFragmentManager().beginTransaction();
         return v;
     }
 }
