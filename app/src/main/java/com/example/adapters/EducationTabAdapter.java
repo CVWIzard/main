@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import com.example.fragments.EducationTab;
 import com.example.pavel.cvwizard.R;
 
+import java.util.LinkedList;
+
 
 /**
  * Created by Pavel on 8/4/2016.
@@ -24,12 +26,13 @@ import com.example.pavel.cvwizard.R;
 public class EducationTabAdapter extends RecyclerView.Adapter<EducationTabAdapter.mEducationViewHolder> {
 
     protected Context mContext;
+    EducationTab educationTab;
+    LinkedList<View> mDataset;
 
-
-    public EducationTabAdapter(Context context, FragmentManager childFragmentManager,Fragment parentFragment) {
+    public EducationTabAdapter(Context context,  EducationTab parentFragment, LinkedList<View> dataset) {
         mContext = context;
-
-
+        educationTab = parentFragment;
+        mDataset = dataset;
     }
 
     @Override
@@ -37,62 +40,45 @@ public class EducationTabAdapter extends RecyclerView.Adapter<EducationTabAdapte
         try {
             return position;
         }catch (NullPointerException e){
-            return EducationTab.mEducationDataSet.size() -1;
+            return mDataset.size() -1;
         }
 
     }
 
     @Override
     public mEducationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Spinner mStartDate, mEndDate;
-        View mMilitaryLayout = LayoutInflater.from(mContext).inflate(R.layout.education_military_service_layout, parent, false);
-        ArrayAdapter<CharSequence> spinnerAdapterStart = ArrayAdapter.createFromResource(mContext, R.array.yearsOfServiceStart, R.layout.support_simple_spinner_dropdown_item);
-        spinnerAdapterStart.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ArrayAdapter<CharSequence> spinnerAdapterEnd = ArrayAdapter.createFromResource(mContext, R.array.yearsOfServiceEnd, R.layout.support_simple_spinner_dropdown_item);
-        spinnerAdapterStart.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mStartDate = (Spinner) mMilitaryLayout.findViewById(R.id.start_of_service);
-        mEndDate = (Spinner) mMilitaryLayout.findViewById(R.id.end_of_service);
-        mStartDate.setAdapter(spinnerAdapterStart);
-        mEndDate.setAdapter(spinnerAdapterEnd);
-
-        View mAcademicLayout = LayoutInflater.from(mContext).inflate(R.layout.education_academy_info, parent, false);
-        Spinner aStartDate = (Spinner) mAcademicLayout.findViewById(R.id.start_of_service);
-        Spinner aEndDate = (Spinner) mAcademicLayout.findViewById(R.id.end_of_service);
-        aStartDate.setAdapter(spinnerAdapterStart);
-        aEndDate.setAdapter(spinnerAdapterEnd);
-
-
-
-        switch (viewType) {
-            case 0:
-                return new mEducationViewHolder(mAcademicLayout);
-            case 1:
-                return new mEducationViewHolder(mMilitaryLayout);
-            default:
-                return null;
-        }
+      return new mEducationViewHolder(mDataset.get(viewType));
 
 
     }
 
     @Override
     public void onBindViewHolder(mEducationViewHolder holder, int position) {
-
+        holder.cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: add cancelation logic
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return EducationTab.mEducationDataSet.size();
+        return mDataset.size();
     }
 
 
     public class mEducationViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView cancelBtn;
+
         public mEducationViewHolder(View itemView) {
             super(itemView);
             if(itemView instanceof CardView) {
                 View mEducationHolder = (CardView) itemView;
+                cancelBtn = (ImageView) mEducationHolder.findViewById(R.id.educaton_cancel_btn);
             }
+
 
         }
 

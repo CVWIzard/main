@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 
+import com.example.Interfaces.OnNewDataSet;
 import com.example.adapters.EducationTabAdapter;
 import com.example.pavel.cvwizard.R;
 
@@ -27,46 +28,40 @@ import java.util.List;
 public class EducationTab extends Fragment  {
 
 
-    CardView mAcademyLayout;
- public static LinkedList<View> mEducationDataSet;
-    View mMilitaryLayout,mAcademicLayout;
-  public  EducationTabAdapter educationDetailsAdapter;
+ public  LinkedList<View> mEducationDataSet;
+    public  EducationTabAdapter educationDetailsAdapter;
+    private LayoutInflater mLayoutInflater;
+    public RecyclerView recyclerView;
+    OnNewDataSet onNewDataSet;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAcademyLayout = (CardView) LayoutInflater.from(getContext()).inflate(R.layout.education_academy_info,null);
         mEducationDataSet = new LinkedList<>();
-        Spinner mStartDate, mEndDate;
-         mMilitaryLayout = LayoutInflater.from(getContext()).inflate(R.layout.education_military_service_layout,null);
-        ArrayAdapter<CharSequence> spinnerAdapterStart = ArrayAdapter.createFromResource(getContext(), R.array.yearsOfServiceStart, R.layout.support_simple_spinner_dropdown_item);
-        spinnerAdapterStart.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ArrayAdapter<CharSequence> spinnerAdapterEnd = ArrayAdapter.createFromResource(getContext(), R.array.yearsOfServiceEnd, R.layout.support_simple_spinner_dropdown_item);
-        spinnerAdapterStart.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mStartDate = (Spinner) mMilitaryLayout.findViewById(R.id.start_of_service);
-        mEndDate = (Spinner) mMilitaryLayout.findViewById(R.id.end_of_service);
-        mStartDate.setAdapter(spinnerAdapterStart);
-        mEndDate.setAdapter(spinnerAdapterEnd);
-
-         mAcademicLayout = LayoutInflater.from(getContext()).inflate(R.layout.education_academy_info,null);
-        Spinner aStartDate = (Spinner) mAcademicLayout.findViewById(R.id.start_of_service);
-        Spinner aEndDate = (Spinner) mAcademicLayout.findViewById(R.id.end_of_service);
-        aStartDate.setAdapter(spinnerAdapterStart);
-        aEndDate.setAdapter(spinnerAdapterEnd);
-      //  EducationTab.addToDataSet(mMilitaryLayout);
-        EducationTab.addToDataSet(mAcademicLayout);
-
+        mLayoutInflater = getLayoutInflater(savedInstanceState);
+        onNewDataSet = new OnNewDataSet() {
+            @Override
+            public void DatasetChanged(int recourceID) {
+                addToDataSet(recourceID);
+            }
+        };
     }
 
-    public static void addToDataSet(View view){
-        mEducationDataSet.add(view);
+    public OnNewDataSet getOnNewDataSet() {
+        return onNewDataSet;
     }
 
-    public static void removeFromDataSet(int position){
+    public void addToDataSet(int viewRecource){
+        mEducationDataSet.add(mLayoutInflater.inflate(viewRecource,null));
+        educationDetailsAdapter.notifyDataSetChanged();
+    }
+
+    public  void removeFromDataSet(int position){
         mEducationDataSet.remove(position);
     }
 
-    public static View getFromDataSet(int position){
+    public  View getFromDataSet(int position){
         return mEducationDataSet.get(position);
 
     }
@@ -77,17 +72,19 @@ public class EducationTab extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup holder = (ViewGroup) inflater.inflate(R.layout.education_main_holder,null);
-        RecyclerView mEducationRecyclerView = new RecyclerView(getContext());
-        mEducationRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        educationDetailsAdapter = new EducationTabAdapter(getContext(),getChildFragmentManager(),this);
-        mEducationRecyclerView.setAdapter(educationDetailsAdapter);
-        holder.addView(mEducationRecyclerView);
+         recyclerView = (RecyclerView) holder.findViewById(R.id.educaton_recyclerview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        mEducationDataSet.add(inflater.inflate(R.layout.education_academy_info,null));
+        educationDetailsAdapter = new EducationTabAdapter(getContext(),this,mEducationDataSet);
+        recyclerView.setAdapter(educationDetailsAdapter);
 
 
 
 
         return holder;
     }
+
 
 
 }

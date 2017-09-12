@@ -132,6 +132,7 @@ public class DetailsActivity extends AppCompatActivity {
 
             private void addEducationPool() {
                 EducationCardPool educationCardPool = new EducationCardPool();
+                educationCardPool.onNewDataSet = mSectionsPagerAdapter.educationTab.getOnNewDataSet();
                 fragmentTransaction.add(R.id.main_content,educationCardPool).addToBackStack("pool").commitAllowingStateLoss();
             }
         });
@@ -243,6 +244,17 @@ public class DetailsActivity extends AppCompatActivity {
         EducationTab educationTab = new EducationTab();
         ExperienceTab experienceTab = new ExperienceTab();
 
+        public PersonalDetailsTab getPersonalDetailsTab() {
+            return personalDetailsTab;
+        }
+
+        public EducationTab getEducationTab() {
+            return educationTab;
+        }
+
+        public ExperienceTab getExperienceTab() {
+            return experienceTab;
+        }
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);

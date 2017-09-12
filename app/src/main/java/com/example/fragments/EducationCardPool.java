@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.Interfaces.OnNewDataSet;
 import com.example.adapters.EducationCardPoolAdapter;
 import com.example.pavel.cvwizard.DetailsActivity;
 import com.example.pavel.cvwizard.R;
@@ -21,7 +22,7 @@ import com.example.pavel.cvwizard.R;
 public class EducationCardPool extends Fragment {
 
     RecyclerView mCardPoolRecycler;
-
+  public  OnNewDataSet onNewDataSet;
 
 
     @Nullable
@@ -29,11 +30,15 @@ public class EducationCardPool extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.card_pool_fragment,null,false);
         mCardPoolRecycler = (RecyclerView) v.findViewById(R.id.educaton_card_pool_recycler);
-        EducationCardPoolAdapter educationCardPoolAdapter = new EducationCardPoolAdapter(getContext());
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(),2,LinearLayoutManager.VERTICAL,false);
+        EducationCardPoolAdapter educationCardPoolAdapter = new EducationCardPoolAdapter(getContext(),this,getOnNewDataSet());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         mCardPoolRecycler.setLayoutManager(layoutManager);
         mCardPoolRecycler.setAdapter(educationCardPoolAdapter);
         DetailsActivity.mInstance.fragmentTransaction = DetailsActivity.mInstance.getSupportFragmentManager().beginTransaction();
         return v;
+    }
+
+    public OnNewDataSet getOnNewDataSet() {
+        return onNewDataSet;
     }
 }
