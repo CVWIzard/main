@@ -42,10 +42,16 @@ public class EducationTab extends Fragment  {
         mLayoutInflater = getLayoutInflater(savedInstanceState);
         onNewDataSet = new OnNewDataSet() {
             @Override
-            public void DatasetChanged(int recourceID) {
-                addToDataSet(recourceID);
+            public void addToDataSet(int recourceID) {
+                EducationTab.this.addToDataSet(recourceID);
+            }
+
+            @Override
+            public void removeFromDataSet(int position) {
+                EducationTab.this.removeFromDataSet(position);
             }
         };
+
     }
 
     public OnNewDataSet getOnNewDataSet() {
@@ -57,8 +63,9 @@ public class EducationTab extends Fragment  {
         educationDetailsAdapter.notifyDataSetChanged();
     }
 
-    public  void removeFromDataSet(int position){
+    public void removeFromDataSet(int position){
         mEducationDataSet.remove(position);
+        educationDetailsAdapter.notifyDataSetChanged();
     }
 
     public  View getFromDataSet(int position){

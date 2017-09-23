@@ -5,5 +5,6 @@ package com.example.Interfaces;
  */
 
 public interface OnNewDataSet {
-    void DatasetChanged(int recourceID);
+    void addToDataSet(int recourceID);
+    void removeFromDataSet(int position);
 }

@@ -13,7 +13,6 @@ import com.example.pavel.cvwizard.DetailsActivity;
 import com.example.pavel.cvwizard.R;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 /**
  * Created by Pavel_Anna on 8/2/2017.
@@ -67,7 +66,7 @@ public class EducationCardPoolAdapter extends RecyclerView.Adapter{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onNewDataSetEvent.DatasetChanged(dataset.get(mImageIDs[position]));
+                onNewDataSetEvent.addToDataSet(dataset.get(mImageIDs[position]));
                 DetailsActivity.mInstance.getSupportFragmentManager().popBackStack();
 
             }

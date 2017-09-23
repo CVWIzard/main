@@ -240,9 +240,11 @@ public class DetailsActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public PersonalDetailsTab personalDetailsTab = new PersonalDetailsTab();
-        EducationTab educationTab = new EducationTab();
-        ExperienceTab experienceTab = new ExperienceTab();
+        public PersonalDetailsTab personalDetailsTab;
+        EducationTab educationTab;
+        ExperienceTab experienceTab;
+
+
 
         public PersonalDetailsTab getPersonalDetailsTab() {
             return personalDetailsTab;
@@ -258,6 +260,12 @@ public class DetailsActivity extends AppCompatActivity {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            personalDetailsTab = new PersonalDetailsTab();
+            educationTab = new EducationTab();
+            experienceTab = new ExperienceTab();
+            personalDetailsTab.setRetainInstance(true);
+            educationTab.setRetainInstance(true);
+            experienceTab.setRetainInstance(true);
         }
 
         @Override

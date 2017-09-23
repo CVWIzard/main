@@ -11,6 +11,7 @@
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="EditTextStyle">
         <item name="android:layout_height">48dp</item>
         <item name="android:textSize">16sp</item>

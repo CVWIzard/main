@@ -9,7 +9,7 @@
     <string name="education_card_pool">education card pool</string>
 
     <!--Entry menu -->
-    <string name="generate_file_button">Create new file</string>
+    <string name="generate_file_button">Sign in</string>
 
     <!-- Personal Details Tab -->
     <string name="personal_details_topic">Personal details and contact info</string>
@@ -57,7 +57,10 @@
         <item>2011</item>
         <item>2010</item>
     </string-array>
+    <string name="title_activity_account_lobby">AccountLobby</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 
 </resources>

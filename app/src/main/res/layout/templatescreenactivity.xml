@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:visibility="gone"
-        app:srcCompat="@drawable/tablem"/>
+        />
 
     <android.support.v7.widget.ContentFrameLayout
         android:id="@+id/lastFilesContainer"

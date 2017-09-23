@@ -37,7 +37,7 @@ public class WelcomeScreen extends AppCompatActivity {
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),TemplateScreenActivity.class);
+                Intent intent = new Intent(getApplicationContext(),AccountLobby.class);
                 startActivity(intent);
             }
         });
