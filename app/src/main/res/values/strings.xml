@@ -62,5 +62,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- files context menu -->
+    <string name="context_menu_title">Select action</string>
+    <string name="context_menu_openfile">Open/Edit file</string>
+    <string name="context_menu_deletefile">Delete file</string>
 
 </resources>

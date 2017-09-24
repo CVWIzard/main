@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.pavel.cvwizard.DetailsActivity;
+import com.example.storage.StorageClass;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,6 +38,7 @@ public class PDFCreator {
     int pageNumber = 1;
     PdfDocument pdfDocument;
     CanvasDrawer canvasDrawer;
+    private String mFileName;
 
 
     public PDFCreator(DetailsActivity detailsActivity) {
@@ -49,11 +51,13 @@ public class PDFCreator {
         mDetailsActivity = detailsActivity;
         pdfDocument = new PdfDocument();
         this.canvasDrawer = canvasDrawer;
+
     }
 
 
-    public void createWrittenPage(int pageNumber,ArrayMap<String,String> dataMap){
+    public void createWrittenPage(int pageNumber,ArrayMap<String,String> dataMap,String fileName){
 
+        mFileName = fileName + ".pdf";
         PageInfo pageInfo = new PageInfo.Builder(mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView().getWidth(),mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView().getHeight(), 5).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
        // View content = mDetailsActivity.mSectionsPagerAdapter.personalDetailsTab.getView();
@@ -66,8 +70,8 @@ public class PDFCreator {
 
         pdfDocument.finishPage(page);
         try {
-           // File f = new File(Environment.getExternalStorageDirectory().getPath() + "/" + AppParameters.FILE_FOLDER_NAME, "CV.Wizard.pdf");
-            File f = new File(Environment.getExternalStorageDirectory().getPath() +  "/CV.Wizard.pdf");
+            //File f = new File(Environment.getExternalStorageDirectory().getPath() +  "/CV.Wizard.pdf");
+            File f = new File(StorageClass.getValues("outfolderpath") + "/" + mFileName);
             Log.i("FilePath",f.getPath());
            /* if(!f.exists()) {
                 f.getParentFile().mkdirs();

@@ -326,7 +326,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         PDFCreator pdfCreator = new PDFCreator(this,canvasDrawer);
-        pdfCreator.createWrittenPage(1,stringArrayMap);
+        pdfCreator.createWrittenPage(1,stringArrayMap,stringArrayMap.valueAt(0));
 
     }
 }

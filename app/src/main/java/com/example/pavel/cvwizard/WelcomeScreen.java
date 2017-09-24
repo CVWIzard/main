@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,9 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.fragments.TemplateScreen;
+import com.example.storage.StorageClass;
+
+import java.io.File;
 
 
 public class WelcomeScreen extends AppCompatActivity {
@@ -30,7 +34,18 @@ public class WelcomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
         context = this;
-
+        File folder = new File(Environment.getExternalStorageDirectory() +
+                File.separator + "CV.Wizard");
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdirs();
+        }
+        if (success) {
+            StorageClass.saveValues("outfolderpath",Environment.getExternalStorageDirectory() +
+                    File.separator + "CV.Wizard");
+        } else {
+            // Do something else on failure
+        }
 
 
         mStartBtn = (Button) findViewById(R.id.startBtn);

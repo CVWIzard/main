@@ -10,6 +10,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
 
+import com.example.fragments.SavedFilesFragment;
 import com.example.fragments.TemplateScreen;
 import com.example.fragments.WipFragment;
 import com.example.pavel.cvwizard.R;
@@ -27,7 +28,7 @@ public class AccountLobbyPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         mContext = context;
         fragments[0] = new TemplateScreen();
-        fragments[1] = new WipFragment();
+        fragments[1] = new SavedFilesFragment();
         fragments[2] = new WipFragment();
         fragments[3] = new WipFragment();
     }
