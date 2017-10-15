@@ -1,0 +1,10 @@
+package com.cvwizard.Interfaces;
+
+/**
+ * Created by Pavel on 9/13/2017.
+ */
+
+public interface OnNewDataSet {
+    void addToDataSet(int recourceID);
+    void removeFromDataSet(int position);
+}

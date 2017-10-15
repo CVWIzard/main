@@ -6,7 +6,7 @@
     android:background="@color/white"
     >
 
-    <com.example.customViews.StyledTextView
+    <com.cvwizard.customViews.StyledTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/topic_textViewStyle"

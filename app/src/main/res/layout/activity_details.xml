@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/pager_topic"
     android:fitsSystemWindows="true"
-    tools:context="com.example.pavel.cvwizard.DetailsActivity">
+    tools:context="com.cvwizard.app.cvwizard.com.example.DetailsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

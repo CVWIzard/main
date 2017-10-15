@@ -52,7 +52,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/dollarphotoclub" />
 
-        <com.example.customViews.StyledTextView
+        <com.cvwizard.customViews.StyledTextView
             android:id="@+id/temp_activity_holder_text"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"

@@ -12,7 +12,7 @@
        android:orientation="vertical"
        android:layout_weight="50"
        >
-      <com.example.customViews.StyledTextView
+      <com.cvwizard.customViews.StyledTextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           style="@style/output_textViewStyle"

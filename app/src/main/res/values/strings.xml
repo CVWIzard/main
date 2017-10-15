@@ -21,11 +21,14 @@
     <string name="service_date">Service period</string>
     <string name="notes">Notes</string>
 
-    <string name="academy_topic">High education Info</string>
-    <string name="academy_name">Collage/Institute Name</string>
+    <string name="academy_topic">Education Info</string>
+    <string name="academy_name">School \\ Academy name</string>
     <string name="Degree_title">Degree Title</string>
-    <string name="Grade">Grade/cgpa</string>
+    <string name="Field_of_study">Field of study</string>
+    <string name="description">Description</string>
     <string name="study_period">Study Period</string>
+    <string name="fromyear">From Year</string>
+    <string name="toyear">To Year (or expected)</string>
 
     <!-- Experience Tab -->
     <string name="workplace_topic">Recent Workplace</string>
@@ -37,7 +40,6 @@
 
 
     <string-array name="yearsOfServiceStart">
-        <item>Start</item>
         <item>2016</item>
         <item>2015</item>
         <item>2014</item>
@@ -48,7 +50,6 @@
     </string-array>
 
     <string-array name="yearsOfServiceEnd">
-        <item>End</item>
         <item>2016</item>
         <item>2015</item>
         <item>2014</item>
