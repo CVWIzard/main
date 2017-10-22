@@ -127,7 +127,7 @@ public class WelcomeScreen extends AppCompatActivity {
     LISessionManager.getInstance(getApplicationContext()).init(thisActivity, buildScope(), new AuthListener() {
         @Override
         public void onAuthSuccess() {
-            String url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,picture-url)";
+            String url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,picture-url,email-address)";
             APIHelper apiHelper = APIHelper.getInstance(getApplicationContext());
             apiHelper.getRequest(WelcomeScreen.this, url, new ApiListener() {
                 @Override
@@ -139,6 +139,8 @@ public class WelcomeScreen extends AppCompatActivity {
                     try {
                         intent.putExtra("fullName",responseObj.getString("firstName") + " " + responseObj.getString("lastName"));
                         intent.putExtra("pictureUrl",responseObj.getString("pictureUrl"));
+                        StorageClass.saveValues("fullname",responseObj.getString("firstName") + " " + responseObj.getString("lastName"));
+                        StorageClass.saveValues("email",responseObj.getString("emailAddress"));
                         startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -149,8 +151,14 @@ public class WelcomeScreen extends AppCompatActivity {
                 @Override
                 public void onApiError(LIApiError liApiError) {
                     // Error making GET request!
-                    Log.e("LinkedIn",liApiError.getApiErrorResponse().getMessage());
-                    Toast.makeText(WelcomeScreen.context,"Response retrival failed (response error: " + liApiError.getApiErrorResponse().getMessage() + " )",Toast.LENGTH_SHORT).show();
+                    try {
+                        Log.e("LinkedIn",liApiError.getApiErrorResponse().getMessage());
+                        Toast.makeText(WelcomeScreen.context,"Response retrival failed (response error: " + liApiError.getApiErrorResponse().getMessage() + " )",Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Intent intent = new Intent(getApplicationContext(),AccountLobby.class);
+                        startActivity(intent);
+                    }
                 }
             });
 

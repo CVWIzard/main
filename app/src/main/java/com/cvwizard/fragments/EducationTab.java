@@ -1,18 +1,31 @@
 package com.cvwizard.fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
+import com.avocarrot.json2view.DynamicView;
 import com.cvwizard.Interfaces.OnNewDataSet;
 import com.cvwizard.adapters.EducationTabAdapter;
 import com.cvwizard.app.R;
+import com.cvwizard.utils.LayoutLoader;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.LinkedList;
 
@@ -29,7 +42,7 @@ public class EducationTab extends Fragment  {
     private LayoutInflater mLayoutInflater;
     public RecyclerView recyclerView;
     OnNewDataSet onNewDataSet;
-
+    LayoutLoader layoutLoader;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +61,8 @@ public class EducationTab extends Fragment  {
             }
         };
 
+        layoutLoader = new LayoutLoader(getContext());
+
     }
 
     public OnNewDataSet getOnNewDataSet() {
@@ -55,8 +70,31 @@ public class EducationTab extends Fragment  {
     }
 
     public void addToDataSet(int viewRecource){
-        mEducationDataSet.add(mLayoutInflater.inflate(viewRecource,null));
+      //  mEducationDataSet.add(mLayoutInflater.inflate(viewRecource,null));
+        mEducationDataSet.add(createDynamicViewFromJson(layoutLoader.getJsonFile("military_layout")));
         educationDetailsAdapter.notifyDataSetChanged();
+    }
+
+    private CardView createDynamicViewFromJson(JSONObject json){
+       CardView genericCardView = (CardView) mLayoutInflater.inflate(R.layout.generic_cardview,null);
+        try {
+        ((AppCompatTextView) genericCardView.findViewById(R.id.topic_textview)).setText(json.getString("title"));
+            JSONArray jsonArray = json.getJSONArray("edittexts");
+            for(int i = 0; i < jsonArray.length(); i++) {
+                LinearLayout linearLayout = (LinearLayout) mLayoutInflater.inflate(R.layout.activity_details_child_texts, null);
+                final TextInputLayout textInputLayout = (TextInputLayout) linearLayout.findViewById(R.id.detail_edittext_layout);
+                final TextInputEditText editText = (TextInputEditText) linearLayout.findViewById(R.id.detail_edittext);
+                Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"font/Quicksand-Medium.ttf");
+                textInputLayout.setTypeface(typeface);
+                editText.setHighlightColor(ContextCompat.getColor(getContext(),R.color.white));
+                textInputLayout.setHint(jsonArray.getString(i));
+                ((LinearLayout) genericCardView.findViewById(R.id.generic_content_contaner)).addView(linearLayout);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return genericCardView;
     }
 
     public void removeFromDataSet(int position){

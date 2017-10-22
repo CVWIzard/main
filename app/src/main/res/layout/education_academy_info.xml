@@ -92,20 +92,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding"
-                android:spinnerMode="dialog"
                 android:entries="@array/yearsOfServiceStart"
                 android:prompt="@string/fromyear"
-                ></android.support.v7.widget.AppCompatSpinner>
+                android:spinnerMode="dialog"></android.support.v7.widget.AppCompatSpinner>
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/end_of_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding"
-                android:spinnerMode="dialog"
                 android:entries="@array/yearsOfServiceEnd"
                 android:prompt="@string/toyear"
-                ></android.support.v7.widget.AppCompatSpinner>
+                android:spinnerMode="dialog"></android.support.v7.widget.AppCompatSpinner>
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/appCompatImageButton"

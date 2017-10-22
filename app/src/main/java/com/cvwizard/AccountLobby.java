@@ -39,7 +39,9 @@ public class AccountLobby extends AppCompatActivity
         setContentView(R.layout.activity_account_lobby);
         mProfilePicture = (ImageView) findViewById(R.id.profile_pic);
         mProfileText = (StyledTextView) findViewById(R.id.profile_text);
+        if(getIntent().getStringExtra("pictureUrl") != "null")
         Picasso.with(this).load(getIntent().getStringExtra("pictureUrl")).into(mProfilePicture);
+        if(getIntent().getStringExtra("fullName") != "null")
         mProfileText.setText("Hello " + getIntent().getStringExtra("fullName"));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

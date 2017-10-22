@@ -24,14 +24,12 @@ public class Profession {
     public Profession(String professionName){
         this.name = professionName;
 
-        professionPersonalParameters.put("FIRSTNAME","First Name");
-        professionPersonalParameters.put("LASTNAME","Last Name");
+        professionPersonalParameters.put("FIRSTNAME","Full Name");
         professionPersonalParameters.put("EMAIL","Email");
         professionPersonalParameters.put("CONTACTNUMBER","Contact Number");
         professionPersonalParameters.put("DATEOFBIRTH","Date of birth");
         professionPersonalParameters.put("ADDRESS","Homecity");
 
-        professionAcademicParameters.put("militaryLayout",R.layout.education_military_service_layout);
         professionAcademicParameters.put("academyLayout",R.layout.education_academy_info);
 
         if(AppParameters.DEBUG) {

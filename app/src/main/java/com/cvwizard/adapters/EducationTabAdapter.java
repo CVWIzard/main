@@ -48,12 +48,16 @@ public class EducationTabAdapter extends RecyclerView.Adapter<EducationTabAdapte
 
     @Override
     public void onBindViewHolder(mEducationViewHolder holder, final int position) {
-        holder.cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            educationTab.getOnNewDataSet().removeFromDataSet(position);
-            }
-        });
+        try {
+            holder.cancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                educationTab.getOnNewDataSet().removeFromDataSet(position);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

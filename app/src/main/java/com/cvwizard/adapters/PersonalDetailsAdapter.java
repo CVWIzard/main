@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.cvwizard.app.R;
+import com.cvwizard.storage.StorageClass;
 import com.cvwizard.utils.Profession;
 
 /**
@@ -61,16 +62,16 @@ public class PersonalDetailsAdapter extends RecyclerView.Adapter<PersonalDetails
 
         switch(position){
             case 0: editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                editText.setText(StorageClass.getValues("fullname"));
                 break;
-            case 1: editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            case 1: editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                editText.setText(StorageClass.getValues("email"));
                 break;
-            case 2: editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            case 2: editText.setInputType(InputType.TYPE_CLASS_PHONE);
                 break;
-            case 3: editText.setInputType(InputType.TYPE_CLASS_PHONE);
+            case 3: editText.setInputType(InputType.TYPE_CLASS_DATETIME);
                 break;
-            case 4: editText.setInputType(InputType.TYPE_CLASS_DATETIME);
-                break;
-            case 5: editText.setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
+            case 4: editText.setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
 
         }
 
