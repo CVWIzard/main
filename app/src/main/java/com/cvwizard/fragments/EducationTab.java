@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
-import com.avocarrot.json2view.DynamicView;
+
 import com.cvwizard.Interfaces.OnNewDataSet;
 import com.cvwizard.adapters.EducationTabAdapter;
 import com.cvwizard.app.R;
@@ -56,6 +56,11 @@ public class EducationTab extends Fragment  {
             }
 
             @Override
+            public void addToDataSet(String fileName) {
+                EducationTab.this.addToDataSet(fileName);
+            }
+
+            @Override
             public void removeFromDataSet(int position) {
                 EducationTab.this.removeFromDataSet(position);
             }
@@ -70,8 +75,14 @@ public class EducationTab extends Fragment  {
     }
 
     public void addToDataSet(int viewRecource){
-      //  mEducationDataSet.add(mLayoutInflater.inflate(viewRecource,null));
-        mEducationDataSet.add(createDynamicViewFromJson(layoutLoader.getJsonFile("military_layout")));
+        mEducationDataSet.add(mLayoutInflater.inflate(viewRecource,null));
+      //  mEducationDataSet.add(createDynamicViewFromJson(layoutLoader.getJsonFile("military_layout")));
+        educationDetailsAdapter.notifyDataSetChanged();
+    }
+
+    public void addToDataSet(String filename){
+        //  mEducationDataSet.add(mLayoutInflater.inflate(viewRecource,null));
+        mEducationDataSet.add(createDynamicViewFromJson(layoutLoader.getJsonFile(filename)));
         educationDetailsAdapter.notifyDataSetChanged();
     }
 

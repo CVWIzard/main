@@ -84,7 +84,7 @@ Context context;
          holder.mCardViewHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,textView.getText().toString() + " has cliked",Toast.LENGTH_SHORT ).show();
+                //Toast.makeText(context,textView.getText().toString() + " has cliked",Toast.LENGTH_SHORT ).show();
                 profession = new Profession(textView.getText().toString());
                 Intent intent = new Intent(context, DetailsActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

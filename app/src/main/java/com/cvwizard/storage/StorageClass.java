@@ -33,5 +33,9 @@ public class StorageClass {
     return PERSONAL.getString(key,"EMPTY");
   }
 
+ public static String getValues(String key,String defaultText){
+  return PERSONAL.getString(key,defaultText);
+ }
+
 
 }

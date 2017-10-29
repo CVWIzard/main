@@ -13,6 +13,7 @@ import com.cvwizard.fragments.EducationCardPool;
 import com.cvwizard.DetailsActivity;
 import com.cvwizard.app.R;
 import com.cvwizard.utils.LayoutLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.LinkedHashMap;
 
@@ -27,7 +28,8 @@ public class EducationCardPoolAdapter extends RecyclerView.Adapter{
     LayoutLoader mLayoutLoader;
 
     int mImageIDs[] = {
-            R.drawable.military_layout_pic,
+            R.drawable.edication_base_layout_pic,
+            R.drawable.military_layout_pic
 
     };
 
@@ -37,6 +39,7 @@ public class EducationCardPoolAdapter extends RecyclerView.Adapter{
         this.mContext = mContext;
         onNewDataSetEvent = listener;
         dataset = new LinkedHashMap<>();
+        dataset.put(R.drawable.edication_base_layout_pic,R.layout.education_academy_info);
         dataset.put(R.drawable.military_layout_pic,R.layout.education_military_service_layout);
         mLayoutLoader = layoutLoader;
 
@@ -62,8 +65,17 @@ public class EducationCardPoolAdapter extends RecyclerView.Adapter{
         mEducationCardPoolHolder mEducationCardPoolHolder = new mEducationCardPoolHolder(LayoutInflater.from(mContext).inflate(R.layout.card_pool_education_holder, parent, false));
         try {
             //Will come from server
-            mEducationCardPoolHolder.imageView.setImageResource(mImageIDs[viewType]);
-            mEducationCardPoolHolder.textview.setText(mLayoutLoader.getJsonFile("military_layout").getString("title"));
+            if(viewType == 0){
+                Picasso.with(mContext).load(mImageIDs[viewType]).resize(250, 250)
+                        .centerCrop().into(mEducationCardPoolHolder.imageView);
+              //  mEducationCardPoolHolder.imageView.setImageResource(mImageIDs[viewType]);
+                mEducationCardPoolHolder.textview.setText("Academy info");
+            }else {
+                Picasso.with(mContext).load(mImageIDs[viewType]).resize(250, 250)
+                        .centerCrop().into(mEducationCardPoolHolder.imageView);
+              //  mEducationCardPoolHolder.imageView.setImageResource(mImageIDs[viewType]);
+                mEducationCardPoolHolder.textview.setText(mLayoutLoader.getJsonFile("military_layout").getString("title"));
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +88,11 @@ public class EducationCardPoolAdapter extends RecyclerView.Adapter{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onNewDataSetEvent.addToDataSet(dataset.get(mImageIDs[position]));
+                if(position == 0){
+                    onNewDataSetEvent.addToDataSet(dataset.get(mImageIDs[position]));
+                }else{
+                    onNewDataSetEvent.addToDataSet("military_layout");
+                }
                 DetailsActivity.mInstance.getSupportFragmentManager().popBackStackImmediate();
 
             }

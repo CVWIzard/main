@@ -50,11 +50,20 @@ public class LayoutLoader {
      return a;
  }
 
- //Will be brouth from server
+ public String getFileByIndex (int index) throws IOException {
+       return  context.getAssets().list("static_layouts/")[index];
+ }
+
+ public int getFilesList() throws IOException {
+     return context.getAssets().list("static_layouts/").length;
+ }
+
+ //Will be broth from server
  public JSONObject getJsonFile(String fileName) {
      String json = null;
      JSONObject obj = null;
      try {
+
          InputStream is = context.getAssets().open("static_layouts/" + fileName + ".json");
          int size = is.available();
          byte[] buffer = new byte[size];

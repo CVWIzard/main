@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="5dp"
     android:layout_width="match_parent"
@@ -17,6 +17,8 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:divider="@color/cardview_dark_background"
+            app:errorEnabled="true"
+            android:paddingEnd="15dp"
             >
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/detail_edittext"
@@ -27,4 +29,5 @@
                 android:shadowColor="@color/cardview_shadow_end_color"
                 android:layout_margin="5dp"/>
         </android.support.design.widget.TextInputLayout>
+
 </LinearLayout>

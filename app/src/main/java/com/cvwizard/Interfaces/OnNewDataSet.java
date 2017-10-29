@@ -6,5 +6,6 @@ package com.cvwizard.Interfaces;
 
 public interface OnNewDataSet {
     void addToDataSet(int recourceID);
+    void addToDataSet(String fileName);
     void removeFromDataSet(int position);
 }

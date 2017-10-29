@@ -1,6 +1,7 @@
 package com.cvwizard;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -163,7 +164,7 @@ public class WelcomeScreen extends AppCompatActivity {
             });
 
 
-            Toast.makeText(WelcomeScreen.this, "Success", Toast.LENGTH_SHORT).show();
+           
         }
 
         @Override
@@ -181,8 +182,11 @@ public class WelcomeScreen extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        SplashFragment splashFragment = new SplashFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_welcome_screen,splashFragment,"splash").addToBackStack("splash").commitAllowingStateLoss();
+      /*  SplashFragment splashFragment = new SplashFragment();
+        getSupportFragmentManager().beginTransaction().add(android.R.id.content,splashFragment,"splash").addToBackStack("splash").commitAllowingStateLoss();*/
+        ProgressDialog dialog = ProgressDialog.show(this, "",
+                "Loading. Please wait...", true);
+        dialog.show();
         LISessionManager.getInstance(getApplicationContext()).onActivityResult(this, requestCode, resultCode, data);
 
 

@@ -18,6 +18,7 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,7 +123,9 @@ public class DetailsActivity extends AppCompatActivity {
                             }).show();
                     //function setName(name,phoneNum,City,emailAdress)
                     stringArrayMap = mSectionsPagerAdapter.personalDetailsTab.retriveWrittenData();
-                   webViewFragment.mWebView.loadUrl("javascript:setName(" + stringArrayMap.get("First Name") + ","+ stringArrayMap.get("Contact Number") +","+ stringArrayMap.get("Homecity") +","+ stringArrayMap.get("Email") +")");
+                    Log.i(getClass().getSimpleName(),stringArrayMap.toString());
+                   webViewFragment.mWebView.loadUrl("javascript:setName(" + stringArrayMap.get("Full Name") + ","+ stringArrayMap.get("Contact Number") +","+ stringArrayMap.get("Homecity") +","+ stringArrayMap.get("Email") +")");
+                  // webViewFragment.mWebView.loadUrl("javascript:setName(" + stringArrayMap.get("First Name") + ","+ stringArrayMap.get("Contact Number") +","+ stringArrayMap.get("Homecity") +","+ stringArrayMap.get("Email") +")");
                   // webViewFragment.mWebView.loadUrl("javascript:setName('pavel koifman','0527841723','haifa','pav@')");
 
 
@@ -325,7 +328,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         PDFCreator pdfCreator = new PDFCreator(this,canvasDrawer);
-        pdfCreator.createWrittenPage(1,stringArrayMap,stringArrayMap.valueAt(0));
+        pdfCreator.createWrittenPage(1,stringArrayMap,stringArrayMap.valueAt(3));
 
     }
 }

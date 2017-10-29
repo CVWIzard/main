@@ -13,6 +13,7 @@
 
     <!-- Personal Details Tab -->
     <string name="personal_details_topic">Personal details and contact info</string>
+    <string name="edittexts_error_message">Field is empty or not filled correctly</string>
 
     <!-- Education Tab -->
     <string name="military_service_topic">Military Service</string>
@@ -21,7 +22,7 @@
     <string name="service_date">Service period</string>
     <string name="notes">Notes</string>
 
-    <string name="academy_topic">Education Info</string>
+    <string name="academy_topic">Academy Info</string>
     <string name="academy_name">School \\ Academy name</string>
     <string name="Degree_title">Degree Title</string>
     <string name="Field_of_study">Field of study</string>

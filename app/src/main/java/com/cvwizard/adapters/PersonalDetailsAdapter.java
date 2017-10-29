@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.cvwizard.app.R;
 import com.cvwizard.storage.StorageClass;
+import com.cvwizard.utils.AppParameters;
 import com.cvwizard.utils.Profession;
 
 /**
@@ -48,6 +49,7 @@ public class PersonalDetailsAdapter extends RecyclerView.Adapter<PersonalDetails
                 .inflate(R.layout.activity_details_child_texts, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
+
         return vh;
     }
 
@@ -61,17 +63,82 @@ public class PersonalDetailsAdapter extends RecyclerView.Adapter<PersonalDetails
         editText.setHighlightColor(ContextCompat.getColor(context,R.color.white));
 
         switch(position){
-            case 0: editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-                editText.setText(StorageClass.getValues("fullname"));
+            case 0: editText.setInputType(InputType.TYPE_CLASS_TEXT);
+                editText.setText(StorageClass.getValues("fullname",""));
+                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus){
+                            String text = ((TextInputEditText) v).getText().toString();
+                            if(text.isEmpty()){
+                                ((TextInputEditText) v).setError(context.getString(R.string.edittexts_error_message));
+                            }else{
+                                ((TextInputEditText) v).setError(null);
+                            }
+                        }
+                    }
+                });
                 break;
             case 1: editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-                editText.setText(StorageClass.getValues("email"));
+                editText.setText(StorageClass.getValues("email",""));
+                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus){
+                            String text = ((TextInputEditText) v).getText().toString();
+                            if(text.isEmpty() || !text.contains("@")){
+                                ((TextInputEditText) v).setError(context.getString(R.string.edittexts_error_message));
+                            }else{
+                                ((TextInputEditText) v).setError(null);
+                            }
+                        }
+                    }
+                });
                 break;
             case 2: editText.setInputType(InputType.TYPE_CLASS_PHONE);
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(!hasFocus){
+                        String text = ((TextInputEditText) v).getText().toString();
+                        if(text.isEmpty()){
+                            ((TextInputEditText) v).setError(context.getString(R.string.edittexts_error_message));
+                        }else{
+                            ((TextInputEditText) v).setError(null);
+                        }
+                    }
+                }
+            });
                 break;
             case 3: editText.setInputType(InputType.TYPE_CLASS_DATETIME);
+                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus){
+                            String text = ((TextInputEditText) v).getText().toString();
+                            if(text.isEmpty()){
+                                ((TextInputEditText) v).setError(context.getString(R.string.edittexts_error_message));
+                            }else{
+                                ((TextInputEditText) v).setError(null);
+                            }
+                        }
+                    }
+                });
                 break;
             case 4: editText.setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
+                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(!hasFocus){
+                            String text = ((TextInputEditText) v).getText().toString();
+                            if(text.isEmpty()){
+                                ((TextInputEditText) v).setError(context.getString(R.string.edittexts_error_message));
+                            }else{
+                                ((TextInputEditText) v).setError(null);
+                            }
+                        }
+                    }
+                });
 
         }
 
