@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cvwizard.Interfaces.EditTextInterfaces;
 import com.cvwizard.fragments.EducationCardPool;
 import com.cvwizard.fragments.EducationTab;
 import com.cvwizard.fragments.ExperienceTab;
@@ -32,6 +34,7 @@ import com.cvwizard.app.R;
 import com.cvwizard.utils.AppParameters;
 import com.cvwizard.utils.CanvasDrawer;
 import com.cvwizard.utils.PDFCreator;
+import com.cvwizard.utils.ViewCreator;
 
 import java.io.File;
 
@@ -68,6 +71,7 @@ public class DetailsActivity extends AppCompatActivity {
     };
     private boolean CREATE_ORDER_GIVEN = false;
     public FragmentTransaction fragmentTransaction;
+    public ViewCreator viewCreator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,12 +155,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
+        viewCreator = new ViewCreator(getLayoutInflater(),this);
 
     }
 

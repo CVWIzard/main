@@ -60,10 +60,10 @@ public class PersonalDetailsTab extends Fragment {
         mValues = new  String[personalDetailsAdapter.getItemCount()];
         recyclerView.scrollTo(0,0);
         for(int i = 0; i < personalDetailsAdapter.profession.getPersonalValues().length; i++){
-           /* if(recyclerView.getChildAt(i) instanceof LinearLayout){
-                if(((LinearLayout) recyclerView.getChildAt(i)).getChildAt(0) instanceof TextInputLayout) {
-                    if(((TextInputLayout) ((LinearLayout) recyclerView.getChildAt(i)).getChildAt(0)).getChildAt(0) instanceof TextInputEditText){
-                        TextInputEditText inputEditText = ((TextInputEditText) ((TextInputLayout) ((LinearLayout) recyclerView.getChildAt(i)).getChildAt(0)).getChildAt(0));
+           /* if(mRecyclerView.getChildAt(i) instanceof LinearLayout){
+                if(((LinearLayout) mRecyclerView.getChildAt(i)).getChildAt(0) instanceof TextInputLayout) {
+                    if(((TextInputLayout) ((LinearLayout) mRecyclerView.getChildAt(i)).getChildAt(0)).getChildAt(0) instanceof TextInputEditText){
+                        TextInputEditText inputEditText = ((TextInputEditText) ((TextInputLayout) ((LinearLayout) mRecyclerView.getChildAt(i)).getChildAt(0)).getChildAt(0));
                         Log.i(getClass().getSimpleName(), "Hint: " + inputEditText.getHint() + " Text: " + inputEditText.getText().toString());
                     }
 

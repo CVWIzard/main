@@ -28,6 +28,7 @@ public class SavedFilesFragment extends Fragment {
     RecyclerView mFilesView;
 
     public File[] getFileList(){
+
         String path = StorageClass.getValues("outfolderpath");
         Log.d("Files", "Path: " + path);
         File directory = new File(path);

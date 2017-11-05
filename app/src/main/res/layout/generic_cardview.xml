@@ -28,7 +28,7 @@
         android:orientation="vertical"
         >
 
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:id="@+id/topic_textview"
             style="@style/topic_textViewStyle"
             android:layout_gravity="center_horizontal"

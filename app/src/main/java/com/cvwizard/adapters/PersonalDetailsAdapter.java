@@ -145,6 +145,8 @@ public class PersonalDetailsAdapter extends RecyclerView.Adapter<PersonalDetails
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return profession.getPersonalValues().length;

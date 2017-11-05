@@ -12,4 +12,6 @@ public class AppParameters {
     public static String FILE_FOLDER_NAME = "CV.WIZARD_OUTPUT";
     public static final Pattern sPatternNumbers
             = Pattern.compile("[0-9 ]+");
+
+
 }
